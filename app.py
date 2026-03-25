@@ -96,27 +96,21 @@ def do_login():
 
 @app.route('/GAMES.json')
 def games_json():
-    """Retorna o JSON de games com URLs reescritas para o proxy"""
+    """Retorna o JSON de games com URLs originais do Archive.org"""
     try:
         # URL original do JSON
         json_url = "https://ia600801.us.archive.org/10/items/ps4-fpkg-collection-english-fpkgi/GAMES.json"
         
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-        response = session.get(json_url, headers=headers)
+        response = session.get(json_url, headers=headers, timeout=30)
         
         if response.status_code == 200:
-            data = response.json()
-            
-            # Reescrever URLs para passar pelo proxy
-            new_data = {"DATA": {}}
-            host = request.host_url.rstrip('/')
-            
-            for url, info in data.get("DATA", {}).items():
-                # Converter URL do archive.org para URL do proxy
-                new_url = f"{host}/pkg/{url.replace('https://', '').replace('http://', '')}"
-                new_data["DATA"][new_url] = info
-            
-            return jsonify(new_data)
+            # Retornar o JSON original sem modificar as URLs
+            # O PS4 vai baixar direto do Archive.org
+            return Response(response.content, mimetype='application/json', headers={
+                'Access-Control-Allow-Origin': '*',
+                'Cache-Control': 'public, max-age=3600'
+            })
         else:
             return jsonify({"error": "Falha ao buscar JSON", "status": response.status_code}), 500
             
@@ -130,19 +124,13 @@ def dlc_json():
         json_url = "https://ia600801.us.archive.org/10/items/ps4-fpkg-collection-english-fpkgi/DLC.json"
         
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-        response = session.get(json_url, headers=headers)
+        response = session.get(json_url, headers=headers, timeout=30)
         
         if response.status_code == 200:
-            data = response.json()
-            
-            new_data = {"DATA": {}}
-            host = request.host_url.rstrip('/')
-            
-            for url, info in data.get("DATA", {}).items():
-                new_url = f"{host}/pkg/{url.replace('https://', '').replace('http://', '')}"
-                new_data["DATA"][new_url] = info
-            
-            return jsonify(new_data)
+            return Response(response.content, mimetype='application/json', headers={
+                'Access-Control-Allow-Origin': '*',
+                'Cache-Control': 'public, max-age=3600'
+            })
         else:
             return jsonify({"error": "Falha ao buscar JSON"}), 500
             
@@ -156,19 +144,13 @@ def homebrew_json():
         json_url = "https://ia600801.us.archive.org/10/items/ps4-fpkg-collection-english-fpkgi/HOMEBREW.json"
         
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-        response = session.get(json_url, headers=headers)
+        response = session.get(json_url, headers=headers, timeout=30)
         
         if response.status_code == 200:
-            data = response.json()
-            
-            new_data = {"DATA": {}}
-            host = request.host_url.rstrip('/')
-            
-            for url, info in data.get("DATA", {}).items():
-                new_url = f"{host}/pkg/{url.replace('https://', '').replace('http://', '')}"
-                new_data["DATA"][new_url] = info
-            
-            return jsonify(new_data)
+            return Response(response.content, mimetype='application/json', headers={
+                'Access-Control-Allow-Origin': '*',
+                'Cache-Control': 'public, max-age=3600'
+            })
         else:
             return jsonify({"error": "Falha ao buscar JSON"}), 500
             
