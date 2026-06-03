@@ -1,0 +1,31 @@
+LOJA PS4 - PACOTE PARA PENDRIVE
+
+Pasta pronta:
+PS4/Loja/index.html
+
+Como usar:
+1. Copie a pasta PS4 para a raiz do pendrive.
+2. No PS4, tente abrir o arquivo PS4/Loja/index.html pelo navegador ou por um homebrew/file manager que permita abrir arquivos locais.
+3. Se o navegador do PS4 nao abrir arquivos locais do USB, hospede a pasta PS4/Loja em GitHub Pages ou Cloudflare Pages e acesse a URL publica pelo PS4.
+
+Importante:
+- Esta versao nao depende de servidor local no PC.
+- Os arquivos GAMES.json, DLC.json e HOMEBREW.json estao vazios de proposito.
+- Preencha esses JSONs somente com homebrews, apps proprios, demos ou pacotes que voce tenha direito de distribuir.
+- O fPKGi normalmente espera URLs HTTP/HTTPS. Caminhos locais como ./GAMES.json podem funcionar na pagina web, mas podem nao funcionar dentro do fPKGi.
+
+Formato de item para GAMES.json:
+{
+  "DATA": {
+    "https://exemplo.com/seu-arquivo.pkg": {
+      "title_id": "CUSA00000",
+      "region": "USA",
+      "name": "Nome do pacote",
+      "version": "01.00",
+      "release": "2026-06-02",
+      "size": 123456789,
+      "min_fw": "9.00",
+      "cover_url": "https://exemplo.com/capa.png"
+    }
+  }
+}

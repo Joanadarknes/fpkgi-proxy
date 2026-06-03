@@ -1,0 +1,111 @@
+# ============================================
+#   PS4 GAMES STORE - GUIA SIMPLIFICADO
+# ============================================
+
+## 🎯 O QUE VOCÊ PRECISA:
+
+1. ✅ PS4 com Jailbreak (você já tem!)
+2. ⬇️ Fake PKG Tools (baixar)
+3. 🖼️ Um ícone PNG 512x512
+
+---
+
+## 📥 PASSO 1: BAIXAR FAKE PKG TOOLS
+
+Acesse: https://github.com/CyB1K/PS4-Fake-PKG-Tools-3.87/releases
+
+Baixe o arquivo .zip mais recente e extraia.
+
+---
+
+## 🖼️ PASSO 2: CRIAR/BAIXAR ÍCONE
+
+OPÇÃO A - Baixar pronto:
+1. Acesse: https://www.flaticon.com/search?word=playstation
+2. Baixe qualquer ícone em PNG
+3. Redimensione para 512x512 pixels (use Paint ou online)
+4. Salve como: C:\Users\Joana\Desktop\LojaPS4\pkg-source\sce_sys\icon0.png
+
+OPÇÃO B - Usar imagem qualquer:
+1. Pegue qualquer imagem PNG
+2. Redimensione para 512x512
+3. Salve no caminho acima
+
+---
+
+## ⚙️ PASSO 3: CRIAR O PKG
+
+1. Abra o "Fake PKG Tools" (orbis-pub-gen.exe)
+
+2. Clique em "File" → "New Project"
+
+3. Preencha:
+   - Content ID: UP0001-LOJAPS401_00-GAMESTOREREDIREC
+   - Title: PS4 Games Store
+   - Title ID: LOJAPS401
+   - App Version: 01.00
+   - Category: Game Application
+
+4. Na aba "Files":
+   - Adicione: C:\Users\Joana\Desktop\LojaPS4\pkg-source\sce_sys\icon0.png
+   - Adicione: C:\Users\Joana\Desktop\LojaPS4\pkg-source\sce_sys\param.sfo
+
+5. Clique em "Build" → Escolha onde salvar o .pkg
+
+---
+
+## 📲 PASSO 4: INSTALAR NO PS4
+
+### Opção A - Via USB:
+1. Copie o arquivo .pkg para um pendrive
+2. Conecte no PS4
+3. Vá em Debug Settings → Install Package Files
+4. Selecione o PKG
+
+### Opção B - Via FTP:
+1. No PS4, ative o servidor FTP (GoldHEN → Enable FTP)
+2. Anote o IP mostrado (ex: 192.168.1.100)
+3. No PC, use o FileZilla:
+   - Host: IP do PS4
+   - Porta: 2121
+4. Navegue até /data/pkg/
+5. Copie o arquivo .pkg para lá
+6. No PS4: Debug Settings → Install Package Files
+
+### Opção C - Remote PKG Installer (mais fácil!):
+1. No PS4, abra o Remote PKG Installer
+2. No PC, acesse o IP mostrado pelo navegador
+3. Arraste o .pkg para a página
+4. Instala automaticamente!
+
+---
+
+## 🎮 PASSO 5: USAR
+
+1. O app "PS4 Games Store" aparecerá no XMB
+2. Abra e ele redirecionará para a loja online
+3. Navegue com o controle!
+
+---
+
+## ⚠️ PROBLEMAS COMUNS:
+
+❌ "PKG inválido"
+→ Verifique se o icon0.png é 512x512 exato
+
+❌ "Não aparece no XMB"
+→ Reinicie o PS4
+
+❌ "Erro ao instalar"
+→ Verifique se o jailbreak está ativo
+
+---
+
+## 📁 SEUS ARQUIVOS:
+
+C:\Users\Joana\Desktop\LojaPS4\pkg-source\
+├── sce_sys\
+│   ├── param.sfo     ✅ (já existe)
+│   └── icon0.png     ❌ (você precisa criar/baixar)
+└── index.html        ✅ (página de redirecionamento)
+

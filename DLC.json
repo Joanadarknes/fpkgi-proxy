@@ -1,0 +1,26 @@
+[
+  {
+    "id": "CUSA00001",
+    "region": "USA", 
+    "name": "Sample DLC Pack",
+    "pkg": "https://example.com/dlc1.pkg",
+    "size": "1.2 GB",
+    "sha256": "abc123...",
+    "links": {
+      "mediafire": 1,
+      "1file": 1
+    }
+  },
+  {
+    "id": "CUSA00002", 
+    "region": "EUR",
+    "name": "Expansion Pack",
+    "pkg": "https://example.com/dlc2.pkg", 
+    "size": "2.5 GB",
+    "sha256": "def456...",
+    "links": {
+      "mediafire": 2,
+      "other": 1
+    }
+  }
+]

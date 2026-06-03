@@ -1,0 +1,42 @@
+{
+  "FILTERING": {
+    "CONTENT": "all",
+    "SORT": {
+      "type": "name",
+      "ascending": true
+    },
+    "REGIONS": [
+      "Asia",
+      "Europe",
+      "Japan",
+      "USA"
+    ]
+  },
+  "PREFERENCES": {
+    "DOWNLOADS": {
+      "directDownload": false,
+      "downloadPath": "/user/data/FPKGi/Downloads/",
+      "installAfter": true,
+      "deleteAfter": true,
+      "deleteOnCancel": true
+    },
+    "APPLICATION": {
+      "background_uri": "false",
+      "backgroundMusic": false,
+      "populateViaWeb": true,
+      "enableUpdates": false
+    },
+    "CONTENT_URLS": {
+  "PS1": null,
+  "PS2": null,
+  "PSP": null,
+  "PS5": null,
+  "games": "http://192.168.15.5:8080/GAMES.json",
+  "apps": null,
+  "updates": null,
+  "DLC": "https://ia600801.us.archive.org/10/items/ps4-fpkg-collection-english-fpkgi/DLC.json",
+  "demos": null,
+  "homebrew": null
+    }
+  }
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS4 Games Store - Redirect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'SST', 'Segoe UI', Arial, sans-serif;
+            color: white;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .logo {
+            font-size: 80px;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #00d4ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        p {
+            font-size: 24px;
+            color: #a0a0a0;
+            margin-bottom: 40px;
+        }
+        
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255,255,255,0.1);
+            border-top-color: #00d4ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 20px 60px;
+            background: linear-gradient(90deg, #0066ff, #00d4ff);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover, .btn:focus {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+        
+        .info {
+            margin-top: 40px;
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .urls {
+            margin-top: 30px;
+            text-align: left;
+            background: rgba(0,0,0,0.3);
+            padding: 20px 30px;
+            border-radius: 15px;
+        }
+        
+        .urls h3 {
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+        
+        .urls a {
+            display: block;
+            color: #4a9eff;
+            margin: 10px 0;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        
+        .urls a:hover {
+            color: #00d4ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🎮</div>
+        <h1>PS4 Games Store</h1>
+        <p>Carregando a loja de jogos...</p>
+        <div class="spinner"></div>
+        
+        <a href="https://joanadarknes.github.io/LojaPKGI/" class="btn" id="mainBtn">
+            ✖ Abrir Loja
+        </a>
+        
+        <div class="urls">
+            <h3>Links alternativos:</h3>
+            <a href="https://joanadarknes.github.io/LojaPKGI/">GitHub Pages</a>
+        </div>
+        
+        <p class="info">Pressione X para abrir • Use D-Pad para navegar</p>
+    </div>
+    
+    <script>
+        // Auto-redirect after 3 seconds
+        setTimeout(function() {
+            window.location.href = 'https://joanadarknes.github.io/LojaPKGI/';
+        }, 3000);
+        
+        // Gamepad support for X button
+        function checkGamepad() {
+            const gamepads = navigator.getGamepads();
+            for (const gp of gamepads) {
+                if (gp) {
+                    // X button (cross) is usually button 0
+                    if (gp.buttons[0].pressed) {
+                        window.location.href = 'https://joanadarknes.github.io/LojaPKGI/';
+                    }
+                }
+            }
+            requestAnimationFrame(checkGamepad);
+        }
+        
+        if ('getGamepads' in navigator) {
+            checkGamepad();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+🎮 CONFIGURAÇÃO FPKGI - PRONTA PARA USAR
+===========================================
+
+✅ ARQUIVO GERADO: fpkgi.json
+
+📋 URLs CONFIGURADAS:
+• Games:    http://192.168.15.6:8080/GAMES.json
+• Apps:     http://192.168.15.6:8080/GAMES.json  
+• DLC:      http://192.168.15.6:8080/DLC.json
+• Homebrew: http://192.168.15.6:8080/HOMEBREW.json
+
+🚀 COMO APLICAR NO PS4:
+
+MÉTODO 1 - Via Cliente FTP:
+1. Abra FileZilla ou WinSCP
+2. Conecte no PS4: 192.168.15.3:1337
+3. Navegue para: /user/data/FPKGi/
+4. Envie o arquivo: fpkgi.json
+5. Reinicie o FPKGi
+
+MÉTODO 2 - Via FTP direto:
+1. Ative FTP no PS4 (HEN/CFW)
+2. Use comando: ftp 192.168.15.3
+3. cd /user/data/FPKGi
+4. put fpkgi.json
+
+MÉTODO 3 - Manual no FPKGi:
+1. Triangle → Settings → Content URLs
+2. Configure as URLs listadas acima
+3. Salve e reinicie
+
+🔄 APÓS CONFIGURAR:
+• Reinicie o FPKGi
+• Use R1 para atualizar a lista
+• Os jogos devem aparecer organizados
+
+✅ VERIFICAÇÃO:
+Se aparecer lista de jogos = SUCESSO!
+Se lista vazia = Verifique se servidor está rodando
+
+🔧 SERVIDOR DEVE ESTAR RODANDO:
+python servidor_fpkgi.py
