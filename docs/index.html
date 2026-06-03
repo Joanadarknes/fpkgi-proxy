@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920, initial-scale=1.0, user-scalable=no">
     <meta name="description" content="PS4 Games Database - Base de dados completa com 17,000+ jogos PS4">
-    <meta name="theme-color" content="#0f3460">
+    <meta name="theme-color" content="#16001f">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="manifest" href="manifest.json">
@@ -124,6 +124,7 @@
         .stats {
             display: flex;
             gap: 40px;
+            margin-right: 76px;
         }
         
         .stat {
@@ -178,13 +179,28 @@
         }
 
         .search-container::before {
-            content: 'ðŸ”';
+            content: '';
             position: absolute;
             left: 20px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 18px;
-            color: var(--text-secondary);
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(238, 222, 255, 0.72);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .search-container::after {
+            content: '';
+            position: absolute;
+            left: 35px;
+            top: 50%;
+            width: 9px;
+            height: 2px;
+            background: rgba(238, 222, 255, 0.72);
+            transform: translateY(9px) rotate(45deg);
+            border-radius: 2px;
             z-index: 1;
         }
         
@@ -595,6 +611,10 @@
             .alphabet-nav {
                 display: none;
             }
+
+            .stats {
+                margin-right: 0;
+            }
             
             .games-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -692,38 +712,44 @@
         }
         /* Loja PKGI refresh */
         :root {
-            --bg-primary: linear-gradient(135deg, #111827 0%, #123a63 42%, #6b2d8f 100%);
-            --bg-secondary: rgba(6, 18, 35, 0.68);
-            --bg-card: rgba(13, 31, 55, 0.76);
-            --bg-card-hover: rgba(18, 45, 80, 0.92);
-            --accent: #22d3ee;
-            --accent-secondary: #f97316;
-            --accent-hover: #67e8f9;
-            --text-primary: #f8fafc;
-            --text-secondary: rgba(226, 232, 240, 0.78);
-            --border: rgba(148, 163, 184, 0.28);
-            --glass-bg: rgba(15, 23, 42, 0.72);
-            --glass-border: rgba(125, 211, 252, 0.22);
+            --bg-primary: #07020d;
+            --bg-secondary: rgba(19, 8, 33, 0.84);
+            --bg-card: rgba(24, 10, 41, 0.84);
+            --bg-card-hover: rgba(38, 14, 66, 0.96);
+            --accent: #b45cff;
+            --accent-secondary: #ff3df2;
+            --accent-hover: #d7a8ff;
+            --text-primary: #fff8ff;
+            --text-secondary: rgba(238, 222, 255, 0.78);
+            --border: rgba(210, 168, 255, 0.28);
+            --success: #35f2a3;
+            --glass-bg: rgba(18, 7, 31, 0.78);
+            --glass-border: rgba(190, 116, 255, 0.26);
+        }
+
+        body {
+            background:
+                linear-gradient(135deg, #050108 0%, #130021 48%, #24003d 100%);
         }
 
         body::before {
             background:
-                linear-gradient(115deg, rgba(34, 211, 238, 0.18), transparent 36%),
-                radial-gradient(circle at 70% 8%, rgba(249, 115, 22, 0.22), transparent 28%),
-                radial-gradient(circle at 18% 82%, rgba(59, 130, 246, 0.25), transparent 34%);
+                linear-gradient(120deg, rgba(180, 92, 255, 0.22), transparent 42%),
+                radial-gradient(circle at 74% 10%, rgba(255, 61, 242, 0.22), transparent 30%),
+                radial-gradient(circle at 18% 86%, rgba(112, 42, 255, 0.24), transparent 34%);
         }
 
         body::after {
             background:
-                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+                linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px);
             background-size: 44px 44px;
         }
 
         .header {
             padding: 22px 48px;
-            background: rgba(5, 12, 24, 0.76);
-            border-bottom: 1px solid rgba(125, 211, 252, 0.2);
+            background: rgba(8, 2, 15, 0.84);
+            border-bottom: 1px solid rgba(190, 116, 255, 0.24);
         }
 
         .logo {
@@ -747,6 +773,7 @@
             font-size: 34px;
             line-height: 1;
             font-weight: 900;
+            color: #ffffff;
         }
 
         .brand-subtitle {
@@ -760,15 +787,21 @@
         .search-input {
             border-radius: 12px;
             min-height: 68px;
-            background: rgba(15, 23, 42, 0.8);
-            border-color: rgba(125, 211, 252, 0.35);
+            background: rgba(14, 4, 25, 0.88);
+            border-color: rgba(190, 116, 255, 0.38);
             box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
         }
 
         .stat {
             border-radius: 10px;
             min-width: 132px;
-            background: rgba(15, 23, 42, 0.72);
+            background: rgba(20, 6, 35, 0.78);
+            border-color: rgba(190, 116, 255, 0.24);
+        }
+
+        .stat-value {
+            color: #d7a8ff;
+            text-shadow: 0 0 18px rgba(180, 92, 255, 0.55);
         }
 
         .main {
@@ -776,40 +809,101 @@
         }
 
         .letter-header {
-            color: #7dd3fc;
+            color: #d7a8ff;
             font-size: 46px;
-            border-bottom-color: rgba(125, 211, 252, 0.28);
+            border-bottom-color: rgba(190, 116, 255, 0.28);
+            -webkit-text-fill-color: initial;
+            background: rgba(7, 2, 13, 0.72);
+            text-shadow: 0 0 26px rgba(180, 92, 255, 0.4);
         }
 
         .games-grid {
-            grid-template-columns: repeat(4, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 22px;
         }
 
         .game-card {
             border-radius: 8px;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.86));
-            border: 1px solid rgba(148, 163, 184, 0.28);
-            box-shadow: 0 16px 40px rgba(2, 6, 23, 0.3);
+            padding: 18px;
+            background: linear-gradient(180deg, rgba(28, 9, 48, 0.94), rgba(12, 4, 21, 0.92));
+            border: 1px solid rgba(190, 116, 255, 0.24);
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.38);
         }
 
         .game-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(34, 211, 238, 0.65);
-            box-shadow: 0 20px 52px rgba(8, 145, 178, 0.22);
+            border-color: rgba(255, 61, 242, 0.68);
+            box-shadow: 0 24px 60px rgba(145, 54, 255, 0.3);
         }
 
         .game-cover {
+            display: block;
+            width: 100%;
+            height: auto;
             border-radius: 7px;
-            aspect-ratio: 16 / 7;
+            aspect-ratio: 16 / 9;
             object-fit: cover;
-            background: #020617;
+            background: #08020d;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 16px;
+        }
+
+        .game-cover-fallback {
+            position: relative;
+            display: flex;
+            min-height: 164px;
+            padding: 18px;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            background:
+                linear-gradient(135deg, hsla(var(--cover-hue), 88%, 58%, 0.4), transparent 44%),
+                radial-gradient(circle at 78% 24%, hsla(calc(var(--cover-hue) + 58), 90%, 65%, 0.52), transparent 32%),
+                linear-gradient(160deg, #07020d 0%, #1c0930 52%, #3b0a63 100%);
+            box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.36);
+        }
+
+        .game-cover-fallback::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(115deg, transparent 0 48%, rgba(255,255,255,0.08) 48% 49%, transparent 49% 100%),
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 18px;
+        }
+
+        .cover-label,
+        .cover-initials {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-label {
+            width: fit-content;
+            padding: 7px 10px;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.34);
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1.3px;
+        }
+
+        .cover-initials {
+            align-self: flex-end;
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1;
+            text-shadow: 0 0 24px rgba(255, 61, 242, 0.58);
         }
 
         .game-title {
-            font-size: 23px;
+            font-size: 20px;
             line-height: 1.2;
-            min-height: 56px;
+            min-height: 50px;
+            margin-bottom: 12px;
         }
 
         .game-info {
@@ -819,38 +913,56 @@
         .download-btn {
             border-radius: 8px;
             min-height: 46px;
+            padding: 12px 16px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
         }
 
         .btn-pkg {
-            background: linear-gradient(135deg, #0e7490, #2563eb);
+            background: linear-gradient(135deg, #5b21b6, #8b5cf6);
         }
 
         .btn-other {
-            background: linear-gradient(135deg, #ea580c, #f59e0b);
+            background: linear-gradient(135deg, #581c87, #c026d3);
         }
 
         .download-action {
             width: 100%;
-            background: linear-gradient(135deg, #16a34a, #22c55e);
-            color: #052e16;
+            background: linear-gradient(135deg, #9d4edd, #ff3df2);
+            color: #ffffff;
             font-weight: 900;
             text-decoration: none;
             margin-top: 4px;
+            box-shadow: 0 12px 28px rgba(180, 92, 255, 0.34);
+        }
+
+        .download-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 36px rgba(255, 61, 242, 0.38);
         }
 
         .alphabet-nav {
             width: 64px;
-            background: rgba(5, 12, 24, 0.82);
-            border-left: 1px solid rgba(125, 211, 252, 0.22);
+            background: rgba(8, 2, 15, 0.86);
+            border-left: 1px solid rgba(190, 116, 255, 0.22);
+            top: calc(50% + 30px);
         }
 
         .alphabet-link {
             width: 42px;
             height: 32px;
             border-radius: 6px;
+        }
+
+        .alphabet-link:hover,
+        .alphabet-link.active {
+            color: #ffffff;
+        }
+
+        .search-info,
+        .footer {
+            color: rgba(238, 222, 255, 0.74);
         }
     </style>
 </head>
@@ -1075,6 +1187,8 @@
         
         function createGameCard(game) {
             let gameInfo = '';
+            const downloadUrl = getDownloadUrl(game);
+            const coverHtml = createCoverHtml(game);
 
             if (game.title_id) {
                 gameInfo += `<div class="game-info">ID: ${game.title_id}</div>`;
@@ -1090,16 +1204,16 @@
             if (game.region) {
                 detailsHtml += `<span class="download-btn btn-pkg">Regiao: ${game.region}</span>`;
             }
-            if (canShowDownload(game)) {
-                detailsHtml += `<a href="${escapeAttribute(getDownloadUrl(game))}" class="download-btn download-action" target="_blank" rel="noopener">Baixar</a>`;
+            if (downloadUrl) {
+                detailsHtml += `<a href="${escapeAttribute(downloadUrl)}" class="download-btn download-action" target="_blank" rel="noopener">Baixar PKG</a>`;
             } else if (game.size) {
                 detailsHtml += `<span class="download-btn btn-other">Tamanho: ${formatFileSize(game.size)}</span>`;
             }
 
             return `
                 <div class="game-card">
-                    ${game.cover_url ? `<img src="${game.cover_url}" alt="${game.name}" class="game-cover" loading="lazy">` : ''}
-                    <h3 class="game-title">${game.name}</h3>
+                    ${coverHtml}
+                    <h3 class="game-title">${escapeHtml(game.name)}</h3>
                     ${gameInfo}
                     <div class="game-links">
                         ${detailsHtml}
@@ -1109,12 +1223,58 @@
         }
 
         function canShowDownload(game) {
-            const allowed = ['homebrew', 'freeware', 'demo', 'redistributable', 'own'];
-            return getDownloadUrl(game) && allowed.includes(String(game.license).toLowerCase());
+            return Boolean(getDownloadUrl(game));
         }
 
         function getDownloadUrl(game) {
             return game.download_url || game.source_url || '';
+        }
+
+        function createCoverHtml(game) {
+            if (game.cover_url) {
+                return `<img src="${escapeAttribute(game.cover_url)}" alt="${escapeAttribute(game.name)}" data-name="${escapeAttribute(game.name)}" class="game-cover" loading="lazy" onerror="replaceBrokenCover(this)">`;
+            }
+
+            return createFallbackCover(game.name);
+        }
+
+        function replaceBrokenCover(image) {
+            image.outerHTML = createFallbackCover(image.dataset.name || image.alt || 'PS4');
+        }
+
+        function createFallbackCover(name) {
+            const initials = getInitials(name);
+            const hue = getCoverHue(name);
+
+            return `
+                <div class="game-cover game-cover-fallback" style="--cover-hue: ${hue}">
+                    <span class="cover-label">PS4 PKG</span>
+                    <span class="cover-initials">${initials}</span>
+                </div>
+            `;
+        }
+
+        function getInitials(name) {
+            const words = String(name || 'PS4')
+                .replace(/\[[^\]]*\]/g, ' ')
+                .replace(/[^a-z0-9]+/gi, ' ')
+                .trim()
+                .split(/\s+/)
+                .filter(Boolean);
+
+            const initials = words.slice(0, 2).map(word => word.charAt(0).toUpperCase()).join('');
+            return escapeHtml(initials || 'PS');
+        }
+
+        function getCoverHue(name) {
+            let hash = 0;
+            const text = String(name || 'PS4');
+            for (let i = 0; i < text.length; i++) {
+                hash = ((hash << 5) - hash) + text.charCodeAt(i);
+                hash |= 0;
+            }
+
+            return `${265 + (Math.abs(hash) % 62)}deg`;
         }
 
         function isHttpUrl(value) {
@@ -1122,7 +1282,16 @@
         }
 
         function escapeAttribute(value) {
-            return String(value).replace(/"/g, '&quot;');
+            return escapeHtml(value).replace(/"/g, '&quot;');
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
         }
 
         function formatFileSize(bytes) {
@@ -1219,12 +1388,6 @@
                 clearTimeout(timeout);
                 timeout = setTimeout(later, wait);
             };
-        }
-        
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
         }
     </script>
 </body>

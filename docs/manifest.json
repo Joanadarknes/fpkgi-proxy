@@ -1,11 +1,11 @@
 {
   "name": "PS4 Games Database",
   "short_name": "PS4 Games",
-  "description": "Complete PS4 games database with 17,065+ games",
-  "start_url": "./ps4-pwa-optimized.html",
+  "description": "Loja PKGI PS4 com catalogo online",
+  "start_url": "./index.html",
   "display": "fullscreen",
-  "background_color": "#1a1a2e",
-  "theme_color": "#0f3460",
+  "background_color": "#07020d",
+  "theme_color": "#16001f",
   "orientation": "landscape",
   "icons": [
     {

@@ -1,8 +1,8 @@
 // PS4 Games Database - Service Worker
 // Provides offline functionality by caching all necessary files
 
-const CACHE_NAME = 'ps4-games-db-v1';
-const CACHE_VERSION = '1.0.0';
+const CACHE_NAME = 'ps4-games-db-v2';
+const CACHE_VERSION = '1.1.0';
 
 // Files to cache for offline functionality
 const CACHE_FILES = [
@@ -10,7 +10,8 @@ const CACHE_FILES = [
     './index.html',
     './GAMES_format.json',
     './manifest.json',
-    './gamepad-controller.js'
+    './gamepad-controller.js',
+    './background.jpg'
 ];
 
 // Install event - cache all necessary files
