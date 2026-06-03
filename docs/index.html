@@ -1090,12 +1090,11 @@
                     if (response.ok) {
                         const data = await response.json();
                         
-                        // Converter formato do FPKGi para formato da interface
-                        if (data.DATA) {
-                            allGames = convertFPKGiToGameList(data.DATA);
-                        } else {
-                            allGames = data;
-                        }
+                    if (data.DATA) {
+                        allGames = convertFPKGiToGameList(data.DATA);
+                    } else {
+                        allGames = convertFPKGiToGameList(data);
+                    }
                         
                         console.log('Carregados', allGames.length, 'jogos de', url);
                         loaded = true;
