@@ -753,10 +753,10 @@
         }
 
         .logo {
-            min-width: 420px;
+            min-width: 320px;
             align-items: flex-start;
             flex-direction: column;
-            gap: 4px;
+            gap: 6px;
             text-shadow: none;
         }
 
@@ -780,8 +780,8 @@
             font-size: 13px;
             font-weight: 700;
             color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1.6px;
+            text-transform: none;
+            letter-spacing: 0;
         }
 
         .search-input {
@@ -971,9 +971,8 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <span class="logo-icon">LOJA PKGI</span>
                 <span class="brand-title">PS4 Store</span>
-                <span class="brand-subtitle">Catalogo online para PlayStation 4</span>
+                <span class="brand-subtitle">Jogos para PlayStation 4</span>
             </div>
             
             <div class="search-container">
@@ -985,10 +984,6 @@
                 <div class="stat">
                     <div class="stat-value" id="totalGames">0</div>
                     <div class="stat-label">Jogos</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value" id="totalLinks">0</div>
-                    <div class="stat-label">Tamanho</div>
                 </div>
             </div>
         </div>
@@ -1135,10 +1130,7 @@
         
         function updateStats() {
             const totalGames = allGames.length;
-            const totalSize = allGames.reduce((sum, game) => sum + (Number(game.size) || 0), 0);
-            
             document.getElementById('totalGames').textContent = totalGames.toLocaleString();
-            document.getElementById('totalLinks').textContent = formatFileSize(totalSize);
         }
         
         function displayGames(games) {
@@ -1206,8 +1198,6 @@
             }
             if (downloadUrl) {
                 detailsHtml += `<a href="${escapeAttribute(downloadUrl)}" class="download-btn download-action" target="_blank" rel="noopener">Baixar PKG</a>`;
-            } else if (game.size) {
-                detailsHtml += `<span class="download-btn btn-other">Tamanho: ${formatFileSize(game.size)}</span>`;
             }
 
             return `
