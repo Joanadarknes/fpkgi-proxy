@@ -1028,30 +1028,25 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', init);
         
-        function convertFPKGiToGameList(fpkgiData) {
-            const games = [];
-            
-            for (const [url, gameInfo] of Object.entries(fpkgiData)) {
-                const license = gameInfo.license || gameInfo.type || '';
-                const game = {
-                    name: gameInfo.name || 'Jogo Desconhecido',
-                    letter: (gameInfo.name || 'X').charAt(0).toUpperCase(),
-                    title_id: gameInfo.title_id || '',
-                    region: gameInfo.region || '',
-                    version: gameInfo.version || '',
-                    size: gameInfo.size || 0,
-                    min_fw: gameInfo.min_fw || '',
-                    cover_url: gameInfo.cover_url || '',
-                    source_url: isHttpUrl(url) ? url : '',
-                    download_url: gameInfo.download_url || '',
-                    license
-                };
-                
-                games.push(game);
+            function convertFPKGiToGameList(fpkgiData) {
+                const games = [];
+
+                for (const [url, gameInfo] of Object.entries(fpkgiData)) {
+                    games.push({
+                        name: gameInfo.name || 'Jogo Desconhecido',
+                        letter: (gameInfo.name || 'X').charAt(0).toUpperCase(),
+                        title_id: gameInfo.title_id || '',
+                        region: gameInfo.region || '',
+                        version: gameInfo.version || '',
+                        size: gameInfo.size || 0,
+                        min_fw: gameInfo.min_fw || '',
+                        cover_url: gameInfo.cover_url || '',
+                        download_url: url
+                    });
+                }
+
+                return games;
             }
-            
-            return games;
-        }
         
         async function init() {
             // Register service worker
@@ -1193,11 +1188,19 @@
             }
 
             let detailsHtml = '';
+
             if (game.region) {
                 detailsHtml += `<span class="download-btn btn-pkg">Regiao: ${game.region}</span>`;
             }
+
             if (downloadUrl) {
-                detailsHtml += `<a href="${escapeAttribute(downloadUrl)}" class="download-btn download-action" target="_blank" rel="noopener">Baixar PKG</a>`;
+                detailsHtml += `
+                    <a href="${escapeAttribute(downloadUrl)}"
+                    download
+                    class="download-btn download-action">
+                    Baixar PKG
+                    </a>
+                `;
             }
 
             return `
@@ -1212,8 +1215,8 @@
             `;
         }
 
-        function canShowDownload(game) {
-            return Boolean(getDownloadUrl(game));
+        function getDownloadUrl(game) {
+            return game.download_url || '';
         }
 
         function getDownloadUrl(game) {
