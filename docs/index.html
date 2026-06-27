@@ -1222,6 +1222,10 @@
                 return '';
             }
 
+            if (/^https?:\/\/archive\.org\/download\//i.test(rawUrl)) {
+                return rawUrl.includes('?') ? `${rawUrl}&download=1` : `${rawUrl}?download=1`;
+            }
+
             return rawUrl;
         }
 
