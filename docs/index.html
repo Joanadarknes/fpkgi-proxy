@@ -1023,30 +1023,32 @@
         let currentLetter = '';
         
         // Sample games data (will be replaced by actual data)
-        const sampleGames = [];
+        const sampleGames = [
+            { name: 'God of War', letter: 'G', title_id: 'CUSA07410', region: 'US', version: '1.00', size: 0, min_fw: '5.05', cover_url: '', download_url: '#' }
+        ];
         
         // Initialize
         document.addEventListener('DOMContentLoaded', init);
         
-            function convertFPKGiToGameList(fpkgiData) {
-                const games = [];
+        function convertFPKGiToGameList(fpkgiData) {
+            const games = [];
 
-                for (const [url, gameInfo] of Object.entries(fpkgiData)) {
-                    games.push({
-                        name: gameInfo.name || 'Jogo Desconhecido',
-                        letter: (gameInfo.name || 'X').charAt(0).toUpperCase(),
-                        title_id: gameInfo.title_id || '',
-                        region: gameInfo.region || '',
-                        version: gameInfo.version || '',
-                        size: gameInfo.size || 0,
-                        min_fw: gameInfo.min_fw || '',
-                        cover_url: gameInfo.cover_url || '',
-                        download_url: url
-                    });
-                }
-
-                return games;
+            for (const [url, gameInfo] of Object.entries(fpkgiData)) {
+                games.push({
+                    name: gameInfo.name || 'Jogo Desconhecido',
+                    letter: (gameInfo.name || 'X').charAt(0).toUpperCase(),
+                    title_id: gameInfo.title_id || '',
+                    region: gameInfo.region || '',
+                    version: gameInfo.version || '',
+                    size: gameInfo.size || 0,
+                    min_fw: gameInfo.min_fw || '',
+                    cover_url: gameInfo.cover_url || '',
+                    download_url: url
+                });
             }
+
+            return games;
+        }
         
         async function init() {
             // Register service worker
@@ -1075,10 +1077,7 @@
         async function loadGames() {
             const progressBar = document.getElementById('progressBar');
             
-            // GitHub Pages: carrega o catalogo estatico publicado junto com a loja
-            const urls = [
-                './GAMES_format.json'
-            ];
+            const urls = ['./GAMES_format.json'];
             
             let loaded = false;
             
@@ -1089,12 +1088,12 @@
                     
                     if (response.ok) {
                         const data = await response.json();
-                        
-                    if (data.DATA) {
-                        allGames = convertFPKGiToGameList(data.DATA);
-                    } else {
-                        allGames = convertFPKGiToGameList(data);
-                    }
+
+                        if (data.DATA) {
+                            allGames = convertFPKGiToGameList(data.DATA);
+                        } else {
+                            allGames = convertFPKGiToGameList(data);
+                        }
                         
                         console.log('Carregados', allGames.length, 'jogos de', url);
                         loaded = true;
@@ -1196,8 +1195,9 @@
             if (downloadUrl) {
                 detailsHtml += `
                     <a href="${escapeAttribute(downloadUrl)}"
-                    download
-                    class="download-btn download-action">
+                    class="download-btn download-action"
+                    target="_self"
+                    rel="noopener">
                     Baixar PKG
                     </a>
                 `;
@@ -1216,11 +1216,13 @@
         }
 
         function getDownloadUrl(game) {
-            return game.download_url || '';
-        }
+            const rawUrl = game.download_url || game.source_url || '';
 
-        function getDownloadUrl(game) {
-            return game.download_url || game.source_url || '';
+            if (!rawUrl) {
+                return '';
+            }
+
+            return rawUrl;
         }
 
         function createCoverHtml(game) {

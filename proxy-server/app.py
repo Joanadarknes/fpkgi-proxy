@@ -7,6 +7,7 @@ import requests
 import os
 import json
 import re
+from urllib.parse import unquote
 
 app = Flask(__name__)
 
@@ -193,7 +194,8 @@ def proxy_pkg(pkg_path):
             resp_headers = {
                 'Content-Type': 'application/octet-stream',
                 'Accept-Ranges': 'bytes',
-                'Access-Control-Allow-Origin': '*'
+                'Access-Control-Allow-Origin': '*',
+                'Content-Disposition': f'attachment; filename="{os.path.basename(unquote(pkg_path)) or "download.pkg"}"'
             }
             
             if content_length:
