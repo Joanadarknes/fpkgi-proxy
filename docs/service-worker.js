@@ -1,8 +1,8 @@
 // PS4 Games Database - Service Worker
 // Provides offline functionality by caching all necessary files
 
-const CACHE_NAME = 'ps4-games-db-v2';
-const CACHE_VERSION = '1.1.0';
+const CACHE_NAME = 'ps4-games-db-v3';
+const CACHE_VERSION = '1.2.0';
 
 // Files to cache for offline functionality
 const CACHE_FILES = [
@@ -60,37 +60,21 @@ self.addEventListener('activate', (event) => {
 // Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', (event) => {
     event.respondWith(
-        caches.match(event.request)
-            .then((cachedResponse) => {
-                if (cachedResponse) {
-                    console.log('[Service Worker] Serving from cache:', event.request.url);
-                    return cachedResponse;
+        fetch(event.request)
+            .then((response) => {
+                if (!response || response.status !== 200 || response.type !== 'basic') {
+                    return response;
                 }
-                
-                console.log('[Service Worker] Fetching from network:', event.request.url);
-                return fetch(event.request)
-                    .then((response) => {
-                        // Don't cache non-successful responses
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
-                        
-                        // Clone the response for caching
-                        const responseToCache = response.clone();
-                        
-                        caches.open(CACHE_NAME)
-                            .then((cache) => {
-                                cache.put(event.request, responseToCache);
-                            });
-                        
-                        return response;
-                    })
-                    .catch((error) => {
-                        console.error('[Service Worker] Fetch failed:', error);
-                        // Return offline page or error
-                        return new Response('Offline - Please connect to the internet');
-                    });
+
+                const responseToCache = response.clone();
+
+                caches.open(CACHE_NAME).then((cache) => {
+                    cache.put(event.request, responseToCache);
+                });
+
+                return response;
             })
+            .catch(() => caches.match(event.request))
     );
 });
 
